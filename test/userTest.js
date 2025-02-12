@@ -1,19 +1,17 @@
 ﻿var assert = require('assert');
-// var fullLdapContext = require('../context')();
-// fullLdapContext.options.modelsMapper = fullLdapContext.viewModelsMappers.full;
 
 describe('User::get', function () {
 
-    it('getUserBySciper should get Kermit La Grenouille', function (done) {
+    it('getUserBySciper should get Kermi La Grenouille', function (done) {
         this.fullLdapContext.users.getUserBySciper(133134, function (err, data) {
-            assert.equal(data.displayName, "Kermit La Grenouille");
+            assert.equal(data.displayName, "Kermi La Grenouille");
             done();
         });
     });
 
-    it('getUserBySciper should handle users with two email', function(done) {
-        this.fullLdapContext.users.getUserBySciper(162314, function (err, data) {
-            assert.ok(data.emails.length === 2, "User have 2 email");
+    it('getUserBySciper should handle users with two emails', function(done) {
+        this.fullLdapContext.users.getUserBySciper(133134, function (err, data) {
+            assert.ok(data.emails.length === 2, "User have 2 emails");
             done();
         });
     });
@@ -25,9 +23,9 @@ describe('User::get', function () {
         });
     });
 
-    it('getUserByName should find Kermit La Grenouille', function (done) {
-        this.fullLdapContext.users.getUserByName('Kermit La Grenouille', function (err, data) {
-            assert.equal(data.displayName, 'Kermit La Grenouille');
+    it('getUserByName should find Kermi La Grenouille', function (done) {
+        this.fullLdapContext.users.getUserByName('Kermi La Grenouille', function (err, data) {
+            assert.equal(data.displayName, 'Kermi La Grenouille');
             done();
         });
     });
@@ -47,9 +45,9 @@ describe('User::get', function () {
     });
 
     // Watch out: user with guest account on their EPFL email can appear first.
-    it('getUserByMail should find 188475', function (done) {
-        this.fullLdapContext.users.getUserByMail('gregory.charmier@epfl.ch', function (err, data) {
-            assert.equal(data.sciper, '188475');
+    it('getUserByMail should find 169419', function (done) {
+        this.fullLdapContext.users.getUserByMail('nicolas.borboen@epfl.ch', function (err, data) {
+            assert.equal(data.sciper, '169419');
             done();
         });
     });
@@ -58,9 +56,9 @@ describe('User::get', function () {
 
 describe('User::search', function () {
 
-    it('searchUserByName should search Kermit La Grenouille', function (done) {
-        this.fullLdapContext.users.searchUserByName('Kermit', function (err, data) {
-            assert.equal(data[0].displayName, 'Kermit La Grenouille');
+    it('searchUserByName should search Kermi La Grenouille', function (done) {
+        this.fullLdapContext.users.searchUserByName('Kermi', function (err, data) {
+            assert.equal(data[0].displayName, 'Kermi La Grenouille');
             done();
         });
     });
@@ -72,12 +70,12 @@ describe('User::search', function () {
         });
     });
 
-    it('searchUserByUnitAcronym should search all members of IDEV-F*, including Kermit', function (done) {
-        this.fullLdapContext.users.searchUserByUnitAcronym('IDEV-F', function (err, data) {
+    it('searchUserByUnitAcronym should search all members of ISAS-G*, including Kermi', function (done) {
+        this.fullLdapContext.users.searchUserByUnitAcronym('ISAS-G', function (err, data) {
             let k = data.filter(obj => {
-                return obj.displayName === 'Kermit La Grenouille';
+                return obj.displayName === 'Kermi La Grenouille';
             })
-            assert.equal(k[0].displayName, 'Kermit La Grenouille');
+            assert.equal(k[0].displayName, 'Kermi La Grenouille');
             done();
         });
     });
@@ -86,16 +84,16 @@ describe('User::search', function () {
 
 describe('Users::get', function () {
 
-    it('getUsersBySciper should get Kermit La Grenouille', function (done) {
+    it('getUsersBySciper should get Kermi La Grenouille', function (done) {
         this.fullLdapContext.users.getUsersBySciper(133134, function (err, data) {
-            assert.equal(data[0].displayName, 'Kermit La Grenouille');
+            assert.equal(data[0].displayName, 'Kermi La Grenouille');
             done();
         });
     });
 
-    it('getUsersByName should get Kermit La Grenouille', function (done) {
-        this.fullLdapContext.users.getUsersByName('Kermit La Grenouille', function (err, data) {
-            assert.equal(data[0].displayName, 'Kermit La Grenouille');
+    it('getUsersByName should get Kermi La Grenouille', function (done) {
+        this.fullLdapContext.users.getUsersByName('Kermi La Grenouille', function (err, data) {
+            assert.equal(data[0].displayName, 'Kermi La Grenouille');
             done();
         });
     });
@@ -114,12 +112,12 @@ describe('Users::get', function () {
         });
     });
 
-    it('getUsersByUnitAcronym should search all members of IDEV-FSD, including Kermit', function (done) {
-        this.fullLdapContext.users.getUsersByUnitAcronym('IDEV-FSD', function (err, data) {
+    it('getUsersByUnitAcronym should search all members of ISAS-GE, including Kermi', function (done) {
+        this.fullLdapContext.users.getUsersByUnitAcronym('ISAS-GE', function (err, data) {
             let k = data.filter(obj => {
-                return obj.displayName === 'Kermit La Grenouille';
+                return obj.displayName === 'Kermi La Grenouille';
             })
-            assert.equal(k[0].displayName, 'Kermit La Grenouille');
+            assert.equal(k[0].displayName, 'Kermi La Grenouille');
             done();
         });
     });
